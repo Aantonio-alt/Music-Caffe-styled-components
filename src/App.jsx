@@ -1,0 +1,35 @@
+import Header from "./components/Header/Header";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import DetailSong from "./pages/DetailSong.jsx";
+import { useState } from "react";
+import SearchBar from "./components/SearchBar/SearchBar.jsx";
+import { ThemeProvider } from "styled-components";
+import Theme from "./theme/index.jsx";
+import GlobalStyles from "./theme/GlobalStyles.jsx";
+
+const App = () => {
+  const [artistName, setArtistName] = useState("Paradisio")
+  const [idAlbum, setIdAlbum] = useState(null)
+
+  const albumSeleccionado = (id) => {
+    setIdAlbum(id)
+    console.log(id)
+  }
+
+  return ( 
+    <ThemeProvider theme={Theme}>
+      <GlobalStyles />
+      <Header busqueda={setArtistName} />
+      <SearchBar artistName={artistName} albumClick={albumSeleccionado}/>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/detailSong" element={<DetailSong idAlbum={idAlbum}/>} />
+          <Route path="/" element={<Home />} /> 
+        </Routes>
+    </ThemeProvider>
+  )
+}
+
+export default App;
+
