@@ -3,8 +3,8 @@ import { AddButton, ButtonContainer, ContainTwo, SongArtist, SongDuration, SongT
 
 const Song = ({artist, duration, name, addButton, removeSong, isAdd}) => {
     return(
-        <SongTitle >
-            <Title>{name}</Title>
+        <SongTitle isAdd={isAdd} >
+            <Title isAdd={isAdd}>{name}</Title>
             <ContainTwo >
                 <SongArtist ><span>Artista: </span> {artist} </SongArtist>
                 <SongDuration ><span>Duración: </span>{duration} </SongDuration>

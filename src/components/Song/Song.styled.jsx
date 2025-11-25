@@ -6,12 +6,11 @@ const SongTitle = styled.section`
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto ;
     padding: .8rem 1.5rem;
-    background-color: ${props => props.theme.colors.blanco};
     border-radius: 1rem;
     cursor: pointer;
     transition: transform .3s ease-in-out,  background-color 0.3s ease-in-out, color 0.3s ease-in-out;
     width: 100%;
-
+    background-color: ${props => props.isAdd ? props.theme.colors.tertiary : props.theme.colors.blanco};
 `
 const ContainTwo = styled.div`
     grid-column: 1/2;
@@ -55,7 +54,7 @@ const Title = styled.h2`
     padding-bottom: .3rem;
     cursor: pointer;
     user-select: none;
-    color: ${props => props.theme.colors.secondary};
+    color: ${props => props.isAdd ? props.theme.colors.primary : props.theme.colors.secondary};
     font-size: 1.5rem;
 `
 const SongArtist = styled.p`
