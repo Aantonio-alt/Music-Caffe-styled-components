@@ -1,29 +1,28 @@
+import React from "react"
+import { AddButton, ButtonContainer, ContainTwo, SongArtist, SongDuration, SongTitle, Title } from "./Song.styled"
 
 const Song = ({artist, duration, name, addButton, removeSong, isAdd}) => {
     return(
-        <div className='songContainer'>
+        <SongTitle >
+            <Title>{name}</Title>
+            <ContainTwo >
+                <SongArtist ><span>Artista: </span> {artist} </SongArtist>
+                <SongDuration ><span>Duración: </span>{duration} </SongDuration>
+            </ContainTwo>
 
-            <h2 className='songTitle'>{name}</h2>
-            <div className='containTwo'>
-                <p className='songArtist'><span>Artista: </span> {artist} </p>
-                <p className='songDuration'><span>Duración: </span>{duration} </p>
-            </div>
-
-                <div className="buttonContainer">
-
-
+                <ButtonContainer >
                     {addButton && (
                         isAdd ? (
-                        <button disabled onClick={addButton} className="addButton"><i class="bi bi-folder-check"></i></button>  )
-                     : ( <button onClick={addButton} className="addButton"><i class="bi bi-folder-plus"></i></button> )
+                        <AddButton disabled onClick={addButton} className="addButton"><i class="bi bi-folder-check"></i></AddButton>  )
+                     : ( <AddButton onClick={addButton} className="addButton"><i class="bi bi-folder-plus"></i></AddButton> )
                      )}
 
                     {removeSong ? (
-                        <button onClick={removeSong} className="addButton"><i class="bi bi-trash"></i></button> 
+                        <AddButton onClick={removeSong} className="addButton"><i class="bi bi-trash"></i></AddButton> 
                     ) : null }
-                </div> 
+                </ButtonContainer> 
 
-        </div>
+        </SongTitle>
     )
 }
 

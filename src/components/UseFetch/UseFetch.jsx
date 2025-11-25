@@ -2,6 +2,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import desconocido from "../../assets/desconocido.png"
 import loadingGift from "../../assets/cargando.gif"
+import { ContainSearchTwo, ContainText, ImagenAlbum, ImagenContain, TitleAlbum, Text, LoadingGift, Load } from "./UseFetch.styled"
 
 const UseFetch = ({idAlbum}) => {
     const [detallesAlbum, setDetallesAlbum] = useState([])
@@ -37,7 +38,9 @@ const UseFetch = ({idAlbum}) => {
     }, [idAlbum])
 
         if (isLoading){
-            return <img src={loadingGift} className="loadingGift" alt="cargando..."/>;
+            return  <Load> 
+                        <LoadingGift src={loadingGift} alt="cargando..."/> 
+                    </Load>;
             
         }
         if (error){
@@ -51,20 +54,21 @@ const UseFetch = ({idAlbum}) => {
                 const {strAlbum, strArtist, intYearReleased, strAlbumThumb, strDescriptionEN, strGenre, idAlbum} = detail;
 
                 return (
-                    <section className="containSearchTwo" key={idAlbum}>
-                        <h2 className="tittleAlbum">{strAlbum}</h2>
+                    <ContainSearchTwo key={idAlbum}>
+                        <TitleAlbum>{strAlbum}</TitleAlbum>
+                        <ContainText>
+                            <Text>Artista: {strArtist ? (strArtist) : ("Desconocido")}</Text>
+                            <Text>Año: {intYearReleased ? (intYearReleased) : ("Desconocido")}</Text>
+                            <Text>Genero: {strGenre ? (strGenre) : ("Desconocido")}</Text>
+                            <Text>Descripción: {strDescriptionEN ? (strDescriptionEN) : ("Desconocido")}</Text>
+                        </ContainText>  
 
-                        <p>Artista: {strArtist ? (strArtist) : ("Desconocido")}</p>
+                        <ImagenContain>
+                            <ImagenAlbum className="imagenSearch2" src={strAlbumThumb ? (strAlbumThumb) : (desconocido)} alt="Album Imagen" />
+                        </ImagenContain>
 
-                        <p>Año: {intYearReleased ? (intYearReleased) : ("Desconocido")}</p>
 
-                        <p>Genero: {strGenre ? (strGenre) : ("Desconocido")}</p>
-
-                        <p>Descripción: {strDescriptionEN ? (strDescriptionEN) : ("Desconocido")}</p>
-                        
-                        <img className="imagenSearch2" src={strAlbumThumb ? (strAlbumThumb) : (desconocido)} alt="Album Imagen" />
-
-                    </section>
+                    </ContainSearchTwo>
                 )
             })}
         

@@ -4,7 +4,7 @@ const Theme = {
         primary: `#F5E6D3`,
         secondary: `#4B2E2B`,
         tertiary: `#7B4B3A`,
-        blanco: `#ffffff`
+        blanco: `rgb(248, 241, 241)`
     },
     fonts: {
         titulo: `"Story Script", sans-serif`,

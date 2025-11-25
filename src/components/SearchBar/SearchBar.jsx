@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import loadingGift from "../../assets/cargando.gif"
 import { Link, useNavigate } from "react-router-dom"
 import desconocido from "../../assets/desconocido.png"
+import { ContainSection, ImagenSearch, ItemBuscado, ResultadosBusqueda, SinBusqueda, Texto, Tittle, TittleAlbum, Load, LoadingGift } from "./SearchBar.styled"
 
 const SearchBar = ({artistName , albumClick}) => {
     const [albums, setAlbums] = useState([])
@@ -46,7 +47,9 @@ const SearchBar = ({artistName , albumClick}) => {
 
                     
         if (isLoading){
-            return <img className="loadingGift" src={loadingGift} alt="cargando..."/>;
+            return  <Load> 
+                        <LoadingGift src={loadingGift} alt="cargando..."/> 
+                    </Load>;
             
         }
         if (error){
@@ -56,34 +59,33 @@ const SearchBar = ({artistName , albumClick}) => {
 
     return (
         <>
-            <section>
-                <h2 className="tittleAlbum">Albumes:</h2>
-                <section className="resultadosBusqueda">
+            <ContainSection>
+                <TittleAlbum>Albumes de {artistName}</TittleAlbum>
+                <ResultadosBusqueda>
                 {albums.length > 0 ? (
                 albums.map((album) => {
                     const {
                         idAlbum, strArtist, strAlbum, strDescriptionES, strAlbumThumb, intYearReleased} = album
 
                     return(
-                        <article className="itemBuscado" 
+                        <ItemBuscado 
                         key={idAlbum} 
                         onClick={ () => itemClickeado(album) }>
-                            <h2 >Album: {strAlbum}</h2>
-                            <p>Artista: {strArtist}</p>
+                            <Tittle>{strAlbum}</Tittle>
+                            <Texto>Artista: {strArtist}</Texto>
+                            <Texto>Año: {intYearReleased}</Texto>
 
-                            <p>Año: {intYearReleased}</p>
-
-                            <img alt="AlbumImage" className="imagenSearch" src={strAlbumThumb ? (strAlbumThumb) : (desconocido)} />
-                        </article>
+                            <ImagenSearch alt="AlbumImage" src={strAlbumThumb ? (strAlbumThumb) : (desconocido)} />
+                        </ItemBuscado>
                     )
                 } )
             ) : (
-                <p>No se encontro nada</p>
+                <SinBusqueda>No se encontro nada</SinBusqueda>
             )
                 }
                 
-                </section>
-            </section>
+                </ResultadosBusqueda>
+            </ContainSection>
         </>
     )
 }

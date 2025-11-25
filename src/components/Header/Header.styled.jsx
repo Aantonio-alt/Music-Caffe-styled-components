@@ -29,6 +29,8 @@ const Buscador = styled.input`
     margin: .3rem .5rem;
     border-color: ${props => props.theme.colors.blanco};
     width: 100%;
+    color: ${props => props.theme.colors.secondary};
+    font-family: 'Courier New', Courier, monospace;
 
     &:hover{
         border-color: ${props => props.theme.colors.secondary};

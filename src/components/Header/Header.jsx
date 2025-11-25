@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useState } from 'react';
-import { Buscador, Formulario, HeaderContainer, Button, MenuOptions, Navegacion} from ".";
+import { Buscador, Formulario, HeaderContainer, Button, MenuOptions, Navegacion} from "./Header.styled";
 
 const Header = ({busqueda}) => {
     const [busquedaInput, setBusquedaInput] = useState("")  
@@ -10,7 +10,6 @@ const Header = ({busqueda}) => {
         busqueda(busquedaInput)
     }
 
-
     return(
         <HeaderContainer>
             <h1>Music Caffe </h1>
@@ -19,11 +18,11 @@ const Header = ({busqueda}) => {
 
                     <Buscador type="search" placeholder="Buscar Artista" value={busquedaInput} onChange={(e) => setBusquedaInput(e.target.value)}/>
 
-                    <Button className="butonSearch" type="submit"><i class="bi bi-search"></i></Button>
+                    <Button  type="submit"><i class="bi bi-search"></i></Button>
 
             </Formulario>
 
-            <MenuOptions className="menuOptions">
+            <MenuOptions>
                 <Navegacion  to="/home" >Inicio</Navegacion> 
                 <Navegacion  to="/detailSong">Detalles</Navegacion>
             </MenuOptions>

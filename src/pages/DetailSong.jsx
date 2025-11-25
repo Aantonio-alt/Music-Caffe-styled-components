@@ -3,6 +3,7 @@ import { useState } from "react";
 import SearchResults from "../components/SearchResults/index";
 import Library from "../components/Library/index";
 import SongDetailApi from "../components/SongsDetailApi/SongDetailApi";
+import { PlayListContainer, Title } from "./Detailsong.styles";
 
 
 
@@ -42,13 +43,13 @@ const DetailSong = ({idAlbum}) => {
     <>
       <UseFetch idAlbum={idAlbum} />
       
-        <section className="generalContainer">
-            <h2 className="songs">PlayList</h2>
+        <PlayListContainer>
+            <Title className="songs">PlayList</Title>
             <Library library={addSongs} removeSong={removeSongFromPlaylist}/>
-        </section>
+        </PlayListContainer>
         
-        <section className="generalContainer">
-            <h2 className="songs">Busqueda</h2>
+        <PlayListContainer>
+            <Title className="songs">Busqueda</Title>
             {
               isLoading ? (
               <p>Cargando...</p>
@@ -56,9 +57,7 @@ const DetailSong = ({idAlbum}) => {
                 <SearchResults songs={songsMapeo} addButton={addSongPlayList} addSongs={addSongs}></SearchResults>
             )
             }
-
-
-        </section>
+        </PlayListContainer>
     </>
   );
 };
