@@ -38,13 +38,11 @@ const AddButton = styled.button`
 
         &:hover{ 
             transform: scale(1.01);
-            background-color: $color-subtitulos;
-            color: $color-titulos;
+            background-color: ${props => props.theme.colors.secondary};
+            color: ${props => props.theme.colors.blanco};
         }
         &:active{
-            transform: scale(.90);
-            background-color: $color-fondo;
-            
+            transform: scale(.90);            
         }
 `
 const Title = styled.h2`
